@@ -1,0 +1,15 @@
+{
+  "name": "download-vscode-bypassing-firewall",
+  "version": "1.0.0",
+  "description": "Node tutorial explaining using node streams",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "keywords": [
+    "node",
+    "pipe"
+  ],
+  "author": "Akash Panigrahi",
+  "license": "MIT"
+}
