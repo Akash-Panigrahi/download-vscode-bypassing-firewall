@@ -8,13 +8,17 @@ http
         const { pathname, query } = url.parse(req.url, true);
 
         if (pathname === '/download' && req.method === 'GET') {
+            console.log('GET /download api hit');
+
             const { link, name } = query;
             const filePath = './' + name;
 
             fetch(link)
                 .then(fetchRes => fetchRes.buffer())
                 .then(buffer => {
+                    console.log('file fetched');
                     fs.writeFile(filePath, buffer, () => {
+                        console.log('file wrote to disk');
                         res.writeHead(200, {
                             'content-disposition': `attachment; filename=${name}`,
                             'content-type': 'application/octet-stream',
