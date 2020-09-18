@@ -15,23 +15,19 @@ http
             console.log('GET /download api hit');
 
             const { link, name } = query;
-            const filePath = './' + name;
 
             fetch(link)
                 .then(fetchRes => fetchRes.buffer())
                 .then(buffer => {
-                    console.log('file fetched');
-                    fs.writeFile(filePath, buffer, () => {
-                        console.log('file wrote to disk');
-                        res.writeHead(200, {
-                            'content-disposition': `attachment; filename=${name}`,
-                            'content-type': 'application/octet-stream',
-                        });
-                        fs.createReadStream(filePath).pipe(res);
+                    fs.writeFileSync(name, buffer);
+                    res.writeHead(200, {
+                        'content-disposition': `attachment; filename=${name}`,
+                        'content-type': 'application/octet-stream',
                     });
+                    fs.createReadStream(name).pipe(res);
                 })
                 .catch(err => res.end(err.message))
-                .finally(() => fs.unlinkSync(filePath));
+                .finally(() => fs.unlinkSync(name));
         }
     })
     .listen(process.env.PORT || 4000, () => console.log('server listening'));
