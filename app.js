@@ -7,6 +7,10 @@ http
     .createServer((req, res) => {
         const { pathname, query } = url.parse(req.url, true);
 
+        if (pathname === '/' && req.method === 'GET') {
+            res.end('🙏');
+        }
+
         if (pathname === '/download' && req.method === 'GET') {
             console.log('GET /download api hit');
 
