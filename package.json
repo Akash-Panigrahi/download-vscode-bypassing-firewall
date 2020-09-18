@@ -4,7 +4,7 @@
   "description": "Node tutorial explaining using node streams",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app"
   },
   "keywords": [
     "node",
