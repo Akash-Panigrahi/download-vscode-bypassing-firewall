@@ -4,12 +4,15 @@
   "description": "Node tutorial explaining using node streams",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "nodemon app"
   },
   "keywords": [
     "node",
     "pipe"
   ],
   "author": "Akash Panigrahi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
 }
